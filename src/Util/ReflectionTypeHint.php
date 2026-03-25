@@ -65,10 +65,11 @@ class ReflectionTypeHint
 
     public static function isValid()
     {
-        if (!assert_options(ASSERT_ACTIVE)) {
-            return true;
-        }
-        $bt = self::debugBacktrace(null, 1);
+		if ((int) ini_get('zend.assertions') <= 0) {
+    		return true;
+		}
+		
+		$bt = self::debugBacktrace(null, 1);
         $file = $line = $function = $class = $object = $type = $args = null;
         extract($bt);  //to $file, $line, $function, $class, $object, $type, $args
         /**
