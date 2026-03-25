@@ -2845,7 +2845,7 @@ class LangCorrect
      *
      * @return  string|bool            Returns FALSE if error occured
      */
-    public function parse(string $s, int $mode = self::SIMILAR_CHARS, array &$words = null)
+    public function parse(string $s, int $mode = self::SIMILAR_CHARS, ?array &$words = null)
     {
         if ($mode < self::SIMILAR_CHARS || $mode > (self::SIMILAR_CHARS | self::KEYBOARD_LAYOUT | self::ADD_FIX)) {
             trigger_error('Unknown mode', E_USER_WARNING);
