@@ -175,7 +175,7 @@ class ReflectionTypeHint
             if ($re_ignore && $next) {
                 // Name of function "inside which" frame was generated.
                 $frame_caller = (isset($next['class']) ? $next['class'] . $next['type'] : '')
-                    . (isset($next['function']) ? $next['function'] : '');
+                    . $next['function'];
                 if (preg_match($re_ignore, $frame_caller)) {
                     continue;
                 }

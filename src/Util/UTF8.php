@@ -209,25 +209,4 @@ class UTF8
         return mb_substr($s, $offset, $length, 'utf-8');
     }
 
-    public static function tests()
-    {
-        assert_options(ASSERT_ACTIVE, true);
-        assert_options(ASSERT_BAIL, true);
-        assert_options(ASSERT_WARNING, true);
-        assert_options(ASSERT_QUIET_EVAL, false);
-        $a = [
-            'self::diactrical_remove("вдох\xc2\xadно\xc2\xadве\xcc\x81\xc2\xadние") === "вдох\xc2\xadно\xc2\xadве\xc2\xadние"',
-            'self::diactrical_remove("вдох\xc2\xadно\xc2\xadве\xcc\x81\xc2\xadние", array("\xc2\xad")) === "вдохновение"',
-            'self::diactrical_remove("вдох\xc2\xadно\xc2\xadве\xcc\x81\xc2\xadние", array("\xc2\xad"), true, $restore_table) === "вдохновение"',
-            'self::diactrical_restore("вдохновение", $restore_table) === "вдох\xc2\xadно\xc2\xadве\xcc\x81\xc2\xadние"',
-        ];
-        foreach ($a as $k => $v) {
-            if (!assert($v)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
 }
